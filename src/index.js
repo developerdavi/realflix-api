@@ -9,6 +9,7 @@ require('dotenv').config();
 const routes = require('./Routes');
 const LogMiddleware = require('./Middlewares/LogMiddleware');
 const SocketIOService = require('./Services/SocketIOService');
+const Database = require('./Services/Database');
 
 // MIDDLEWARES
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use(LogMiddleware);
 
 // SERVICES
 SocketIOService(http);
+Database.connect();
 
 const PORT = process.env.PORT || 3000;
 
